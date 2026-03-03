@@ -1,3 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Townsend Community Pharmacy</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fdf6; /* vert pâle clair */
+    color: #222;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #d32f2f; /* rouge */
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 { margin: 0; }
+  nav {
+    background-color: #a5d6a7; /* vert pâle */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  nav a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  section {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  .services, .partners {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1 1 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #d32f2f;
+    color: white;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  table, th, td {
+    border: 1px solid #999;
+  }
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  select {
+    padding: 5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Townsend Community Pharmacy</h1>
+  <p>Votre pharmacie RP moderne, en partenariat avec HCT et Fondation Phoenix</p>
+</header>
+
+<nav>
+  <a href="#services">Services</a>
+  <a href="#partners">Partenaires</a>
+  <a href="#patient">Espace Patient</a>
+</nav>
+
+<section id="services">
+  <h2>Nos Services RP</h2>
+  <div class="services">
+    <div class="card">
+      <h3>Délivrance d'ordonnances</h3>
+      <p>Simulation RP de délivrance de médicaments</p>
+    </div>
+    <div class="card">
+      <h3>Traitements longue durée</h3>
+      <p>Gérer vos traitements RP</p>
+    </div>
+    <div class="card">
+      <h3>Fourniture EMS</h3>
+      <p>Partenariat RP avec les EMS (HCT)</p>
+    </div>
+    <div class="card">
+      <h3>Gestion mutuelle</h3>
+      <p>Simulez votre couverture mutuelle RP</p>
+    </div>
+  </div>
+</section>
+
+<section id="partners">
+  <h2>Nos Partenaires RP</h2>
+  <div class="partners">
+    <div class="card">HCT (EMS)</div>
+    <div class="card">Fondation Phoenix</div>
+  </div>
+</section>
+
 <section id="patient">
   <h2>Espace Patient RP</h2>
   <p>Connexion et suivi fictif pour vos patients RP</p>
@@ -6,10 +133,8 @@
   <div id="patient-list"></div>
 
   <script>
-  // Compte actuellement connecté RP
-  let currentUser = "Moi (CEO)"; // Remplace par ton pseudo RP si besoin
+  let currentUser = "Moi (CEO)"; // ton pseudo RP
 
-  // Liste des patients RP
   let patients = [
     {name:"Moi (CEO)", role:"CEO"},
     {name:"Joueur1", role:"PCF"},
@@ -19,7 +144,7 @@
   ];
 
   function displayPatients() {
-    let table = "<table border='1' style='width:100%; text-align:center'><tr><th>Nom RP</th><th>Rôle</th><th>Changer Rôle</th></tr>";
+    let table = "<table><tr><th>Nom RP</th><th>Rôle</th><th>Changer Rôle</th></tr>";
     patients.forEach((p, index) => {
       table += `<tr>
         <td>${p.name}</td>
@@ -34,7 +159,7 @@
                     <option ${p.role==='PS'?'selected':''}>PS</option>
                   </select>`;
       } else {
-        table += "—"; // Pas de modification pour les autres
+        table += "—";
       }
       table += `</td></tr>`;
     });
@@ -54,3 +179,10 @@
   window.onload = displayPatients;
   </script>
 </section>
+
+<footer>
+  &copy; 2026 Townsend Community Pharmacy RP
+</footer>
+
+</body>
+</html>
