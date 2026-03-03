@@ -1,0 +1,56 @@
+<section id="patient">
+  <h2>Espace Patient RP</h2>
+  <p>Connexion et suivi fictif pour vos patients RP</p>
+  <a href="#" class="btn">Se connecter (simulé)</a>
+
+  <div id="patient-list"></div>
+
+  <script>
+  // Compte actuellement connecté RP
+  let currentUser = "Moi (CEO)"; // Remplace par ton pseudo RP si besoin
+
+  // Liste des patients RP
+  let patients = [
+    {name:"Moi (CEO)", role:"CEO"},
+    {name:"Joueur1", role:"PCF"},
+    {name:"Joueur2", role:"PC"},
+    {name:"Joueur3", role:"AP"},
+    {name:"Joueur4", role:"PS"}
+  ];
+
+  function displayPatients() {
+    let table = "<table border='1' style='width:100%; text-align:center'><tr><th>Nom RP</th><th>Rôle</th><th>Changer Rôle</th></tr>";
+    patients.forEach((p, index) => {
+      table += `<tr>
+        <td>${p.name}</td>
+        <td>${p.role}</td>
+        <td>`;
+      if(currentUser === "Moi (CEO)") {
+        table += `<select onchange="changeRole(${index}, this.value)">
+                    <option ${p.role==='CEO'?'selected':''}>CEO</option>
+                    <option ${p.role==='PCF'?'selected':''}>PCF</option>
+                    <option ${p.role==='PC'?'selected':''}>PC</option>
+                    <option ${p.role==='AP'?'selected':''}>AP</option>
+                    <option ${p.role==='PS'?'selected':''}>PS</option>
+                  </select>`;
+      } else {
+        table += "—"; // Pas de modification pour les autres
+      }
+      table += `</td></tr>`;
+    });
+    table += "</table>";
+    document.getElementById("patient-list").innerHTML = table;
+  }
+
+  function changeRole(index, newRole) {
+    if(currentUser === "Moi (CEO)") {
+      patients[index].role = newRole;
+      displayPatients();
+    } else {
+      alert("Seul le CEO peut changer les rôles !");
+    }
+  }
+
+  window.onload = displayPatients;
+  </script>
+</section>
